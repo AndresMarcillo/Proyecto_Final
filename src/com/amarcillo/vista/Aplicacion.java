@@ -12,7 +12,9 @@ import com.amarcillo.controlador.Coordinador;
  * @author Andres
  */
 public class Aplicacion {
+    
     public static void main(String[] args) {
-        Coordinador.showMenu();
+        Coordinador coordinador = new Coordinador();
+        coordinador.showMenu();
     }
 }

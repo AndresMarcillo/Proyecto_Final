@@ -5,20 +5,32 @@
  */
 package com.amarcillo.controlador;
 
+import com.amarcillo.vista.BookInter;
+import com.amarcillo.vista.MagazineInter;
+import com.amarcillo.vista.MovieInter;
+import com.amarcillo.vista.SeriesInter;
 import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
 import java.util.Date;
 import java.util.Scanner;
+import javax.swing.JOptionPane;
+import sun.tools.jar.resources.jar;
 
 /**
  *
  * @author Andres
  */
 public class Coordinador {
-    public static void showMenu(){
-      int exit=0;
+    BookInter bookInter = new BookInter(this);
+    MagazineInter magazineInter = new MagazineInter(this);
+    MovieInter movieInter = new MovieInter(this);
+    SeriesInter serieInter = new SeriesInter(this);
+    
+    public void showMenu(){
+        int response;
         do { 
-            System.out.println("Bienvenidos a Netflix viewer");
-            System.out.println("Selecciona una opcion: \n"
+            // leer la respuesta del ususario
+            response=Integer.parseInt(JOptionPane.showInputDialog("Bienvenidos a Netflix viewer"
+                               +"Selecciona una opcion: \n"
                                +"1.- Books \n"
                                +"2.- Magazine \n"
                                +"3.- Movies \n"
@@ -26,10 +38,7 @@ public class Coordinador {
                                +"\n ---------------------\n"
                                +"5.- Report \n"
                                +"6.- Report today \n"
-                               +"0.- Exit");
-            // leer la respuesta del ususario
-            Scanner input =new Scanner(System.in);
-            int response=input.nextInt();
+                               +"0.- Exit"));
             switch(response){
                 case 0:
                     //salir
@@ -54,31 +63,31 @@ public class Coordinador {
                     makeReport(new Date());
                     break;
                 default:
-                    System.out.println("");
-                    System.out.println(".....¡Selecciona una opcion......!");
-                    System.out.println("");
+                    JOptionPane.showMessageDialog(null, ".....¡Selecciona una opcion......!");
                     break; 
             }
-        } while (exit !=0);
+        } while (response !=0);
     }
     
-    private static void showMovies(){
-        int exit =0;
-        do { 
-            System.out.println("");
-            System.out.println("::MOVIES ::");
-            System.out.println("");
-            
-        } while (exit !=0);
+    private void showMovies(){
+//        int exit =0;
+//        do { 
+//            System.out.println("");
+//            System.out.println("::MOVIES ::");
+//            System.out.println("");
+//            
+//        } while (exit !=0);
+        movieInter.setVisible(true);
     }
     
-    private static void showSeries(){
-        int exit =0;
-        do { 
-            System.out.println("");
-            System.out.println("::SERIES ::");
-            System.out.println("");        
-        } while (exit !=0);
+    private void showSeries(){
+//        int exit =0;
+//        do { 
+//            System.out.println("");
+//            System.out.println("::SERIES ::");
+//            System.out.println("");        
+//        } while (exit !=0);
+        serieInter.setVisible(true);
     }
     
     private static void showChapter(){
@@ -90,22 +99,21 @@ public class Coordinador {
         } while (exit !=0);
     }
     
-    private static void showBooks(){
-        int exit =0;
-        do { 
-            System.out.println("");
-            System.out.println("::BOOKS ::");
-            System.out.println("");
-        } while (exit !=0);
+    private void showBooks(){
+//            System.out.println("");
+//            System.out.println("::BOOKS ::");
+//            System.out.println("");
+        bookInter.setVisible(true);
     }
     
-    private static void showMagazine(){
-        int exit =0;
-        do { 
-            System.out.println("");
-            System.out.println("::MAGAZINE ::");
-            System.out.println("");
-        } while (exit !=0);
+    private void showMagazine(){
+//        int exit =0;
+//        do { 
+//            System.out.println("");
+//            System.out.println("::MAGAZINE ::");
+//            System.out.println("");
+//        } while (exit !=0);
+        magazineInter.setVisible(true);
     }
     
     private static void makeReport(){
